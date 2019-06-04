@@ -13,6 +13,22 @@
   &--filled {
     color: $color-white;
     background-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary-light;
+      border: 3px solid $color-primary-light;
+    }
+  }
+
+  &--danger {
+    color: $color-white;
+    background-color: $color-danger;
+    border: 3px solid $color-danger;
+
+    &:hover {
+      background-color: $color-danger-light;
+      border: 3px solid $color-danger-light;
+    }
   }
 
   &--header {

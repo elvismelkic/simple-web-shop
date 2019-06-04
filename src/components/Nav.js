@@ -20,10 +20,10 @@ class Nav extends Component {
           <div className="nav__container">
             <div className="nav__heading">
               <NavLink to="/" exact className="nav__link nav__link--logo">
-                <h1 className="heading heading--primary">E-DEVICES</h1>
+                <h1 className="heading heading--primary">e-devices</h1>
               </NavLink>
               <h2 className="heading heading--secondary">
-                Get the best electronic devices in the market!
+                Get the best electronic devices on the market!
               </h2>
             </div>
             <ul className="nav__list">

@@ -17,8 +17,13 @@ class Modal extends Component {
     }));
   };
 
-  closeOnEscape = event =>
-    event.keyCode === 27 ? this.props.closeModal() : null;
+  closeOnEscape = event => {
+    this.setState(() => ({
+      quantity: 1
+    }));
+
+    return event.keyCode === 27 ? this.props.closeModal() : null;
+  };
 
   componentDidMount() {
     // Close modal when escape key is pressed.
@@ -40,13 +45,26 @@ class Modal extends Component {
           className={`modal__dark-background ${
             product ? "modal__dark-background--active" : null
           }`}
-          onClick={this.props.closeModal}
+          onClick={() => {
+            this.setState(() => ({
+              quantity: 1
+            }));
+            this.props.closeModal();
+          }}
         />
         {product === null ? (
           <div className="modal__container" />
         ) : (
           <div className="modal__container modal__container--active">
-            <button className="modal__exit" onClick={this.props.closeModal}>
+            <button
+              className="modal__exit"
+              onClick={() => {
+                this.setState(() => ({
+                  quantity: 1
+                }));
+                this.props.closeModal();
+              }}
+            >
               &#10005;
             </button>
             <div className="modal__img-container">
@@ -87,27 +105,29 @@ class Modal extends Component {
                   </option>
                 </select>
               </div>
-              <Button
-                fill="filled"
-                clickFunction={() => {
-                  this.props.addToBasket({
-                    product,
-                    quantity: this.state.quantity
-                  });
-                }}
-              >
-                {this.props.basket.every(val => val.id !== product.id)
-                  ? "Add to basket"
-                  : "Update quantity"}
-              </Button>
-              <Button
-                fill="filled"
-                clickFunction={() => {
-                  this.props.removeFromBasket(product.id);
-                }}
-              >
-                Remove
-              </Button>
+              <div className="modal__button-container">
+                <Button
+                  fill="filled"
+                  clickFunction={() => {
+                    this.props.addToBasket({
+                      product,
+                      quantity: this.state.quantity
+                    });
+                  }}
+                >
+                  {this.props.basket.every(val => val.id !== product.id)
+                    ? "Add to basket"
+                    : "Update quantity"}
+                </Button>
+                <Button
+                  fill="danger"
+                  clickFunction={() => {
+                    this.props.removeFromBasket(product.id);
+                  }}
+                >
+                  Remove
+                </Button>
+              </div>
             </div>
           </div>
         )}

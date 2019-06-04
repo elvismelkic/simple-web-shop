@@ -13,6 +13,7 @@
     max-width: 100rem;
     width: 90%;
     margin: 0 auto;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,7 +35,7 @@
   &__sort {
     position: absolute;
     top: 0.3rem;
-    right: 5rem;
+    right: 0;
     width: 20rem;
     padding: 0.5rem;
     font-family: inherit;
@@ -52,20 +53,21 @@
     }
   }
 
-  &__beer {
-    position: relative;
-    flex-grow: 1;
+  &__promotion {
+    display: flex;
+    flex-direction: row;
   }
 
-  &__crate {
-    width: 25rem;
-  }
+  &__input {
+    width: 20rem;
+    margin: 2rem 0;
+    padding: 1.3rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: 1px solid $color-grey-light;
 
-  &__beer,
-  &__crate {
     @include respond(phone) {
-      width: 100%;
-      margin-top: 1rem;
+      width: 80%;
     }
   }
 

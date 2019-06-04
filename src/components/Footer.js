@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="footer__row">
           <div>
             <NavLink to="/" exact className="nav__logo-container">
-              <h1 className="heading heading--primary">E-DEVICES</h1>
+              <h1 className="heading heading--primary">e-devices</h1>
             </NavLink>
           </div>
           <ul className="footer__list footer__list--center">

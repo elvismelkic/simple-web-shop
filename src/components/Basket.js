@@ -32,11 +32,11 @@ class Basket extends Component {
     if (applied) return;
 
     if (promotionName === "20%OFF") {
-      newTotal = total * 0.8;
+      newTotal = parseFloat((total * 0.8).toFixed(2));
     } else if (promotionName === "5%OFF") {
-      newTotal = total * 0.95;
+      newTotal = parseFloat((total * 0.95).toFixed(2));
     } else if (promotionName === "20EUROFF") {
-      newTotal = total - 20;
+      newTotal = parseFloat((total - 20).toFixed(2));
     }
 
     this.setState(() => ({
@@ -113,11 +113,11 @@ class Basket extends Component {
           ) : (
             <Fragment>
               <ProductList products={basket} />
-              <div>
+              <div className="main__promotion">
                 <label>
                   <input
                     type="text"
-                    className="checkout__input"
+                    className="main__input"
                     placeholder="Promotion"
                     id="promotion"
                     value={promotionName}
@@ -128,7 +128,7 @@ class Basket extends Component {
                   Apply
                 </Button>
               </div>
-              <p className="main__total">TOTAL: {total} €</p>
+              <p className="main__total">TOTAL: {total.toFixed(2)} €</p>
               <NavLink to="/checkout" className="nav__link">
                 <Button fill={"filled"}>Proceed to checkout</Button>
               </NavLink>

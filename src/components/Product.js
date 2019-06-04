@@ -1,10 +1,10 @@
 import React from "react";
 
 export default function Product({
-  product: { name, description, image, price, inBasket }
+  product: { name, description, image, price }
 }) {
   return (
-    <div className="product">
+    <div className="product__item">
       <div className="product__img-container">
         <img src={image} alt="product logo" className="product__img" />
       </div>
@@ -25,11 +25,11 @@ export default function Product({
               : ""}
           </span>
         </p>
-        {inBasket ? (
+        {/* {inBasket ? (
           <p className="product__info-row">
             <span className="product__info-basket">In basket</span>
           </p>
-        ) : null}
+        ) : null} */}
       </div>
     </div>
   );
