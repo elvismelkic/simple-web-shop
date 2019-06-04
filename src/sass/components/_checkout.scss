@@ -1,0 +1,149 @@
+.checkout {
+  &__form {
+    background-color: $color-white;
+    padding: 2rem 1rem 6rem;
+    border-radius: 5px;
+    box-shadow: 0 0.4rem 0.4rem rgba($color-black, 0.15);
+    position: relative;
+  }
+
+  &__heading {
+    margin: 2rem 1rem;
+    text-transform: uppercase;
+  }
+
+  &__input {
+    display: block;
+    width: 50%;
+    margin: 2rem 1rem;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: 1px solid $color-grey-light;
+    border-radius: 5px;
+
+    @include respond(phone) {
+      width: 80%;
+    }
+  }
+
+  &__line {
+    margin: 3rem 0;
+    border: 1px solid lighten($color-grey-light, 20%);
+  }
+
+  &__radio-label {
+    display: flex;
+    margin: 1rem 0;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-button {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid $color-grey-light;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    left: 1rem;
+    top: 0.15rem;
+    margin-right: 2rem;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 0.8rem;
+      width: 0.8rem;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  // when radio-input is checked, it selects the child of the adjacent sibling
+  &__radio-input:checked + &__radio-button::after {
+    opacity: 1;
+  }
+
+  &__textarea-container {
+    width: 100%;
+    padding: 2rem 1rem 0;
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 15rem;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: 1px solid $color-grey-light;
+    border-radius: 5px;
+  }
+
+  &__checkbox-label {
+    display: flex;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  &__checkbox-input {
+    display: none;
+  }
+
+  &__checkbox-button {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid $color-grey-light;
+    display: inline-block;
+    position: relative;
+    left: 1rem;
+    top: 0.15rem;
+    margin-right: 2rem;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 0.7rem;
+      position: absolute;
+      left: 20%;
+      top: 40%;
+      transform: rotate(45deg);
+      background-color: $color-primary-dark;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 1.2rem;
+      position: absolute;
+      left: 40%;
+      top: 25%;
+      transform: rotate(-45deg);
+      background-color: $color-primary-dark;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  // when checkbox-input is checked, it selects the adjacent sibling
+  &__checkbox-input:checked + &__checkbox-button::before,
+  &__checkbox-input:checked + &__checkbox-button::after {
+    opacity: 1;
+  }
+}

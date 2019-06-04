@@ -1,0 +1,192 @@
+.modal {
+  position: relative;
+
+  &__dark-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: all 0.3s linear;
+    z-index: 9900;
+
+    &--active {
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__container {
+    width: 60rem;
+    height: 50rem;
+    visibility: hidden;
+    opacity: 0;
+    padding: 0 5rem;
+    background-color: $color-white;
+    border-radius: 0.5rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+
+    @include respond(phone) {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+
+    &--active {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+
+      @include respond(phone) {
+        width: 90%;
+      }
+    }
+  }
+
+  &__heart {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    cursor: pointer;
+  }
+
+  &__exit {
+    color: $color-grey-dark;
+    font-size: 2.5rem;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 2.5rem;
+    right: 3rem;
+    cursor: pointer;
+  }
+
+  &__img-container {
+    width: 33.3333%;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(phone) {
+      height: auto;
+      position: absolute;
+      top: -2rem;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    transition: all 0.6s ease-out;
+
+    @include respond(phone) {
+      height: 25rem;
+    }
+  }
+
+  &__name {
+    font-size: 2.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    @include respond(phone) {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+  }
+
+  &__info {
+    width: 66.6667%;
+    padding-left: 5rem;
+
+    @include respond(phone) {
+      width: 90%;
+      margin-top: 23rem;
+      padding-left: 0;
+    }
+
+    &-row {
+      margin: 0.5rem 0;
+
+      @include respond(phone) {
+      }
+    }
+
+    &-name {
+      display: inline-block;
+      font-size: 1.2rem;
+      color: $color-grey;
+      width: 5rem;
+
+      @include respond(phone) {
+        width: auto;
+        margin: 0 0.2rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    &-value {
+      font-size: 2rem;
+      font-weight: 600;
+
+      @include respond(phone) {
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    &-description {
+      font-size: 1.2rem;
+      color: $color-grey;
+      line-height: 2;
+
+      @include respond(phone) {
+        text-align: center;
+        width: 100%;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        padding-bottom: 5rem;
+      }
+    }
+  }
+
+  &__row-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond(phone) {
+      width: 70%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+
+  &__quantity {
+    display: block;
+    width: 5rem;
+    margin: 1rem 0;
+    padding: 0.7rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: 1px solid $color-grey-light;
+    border-radius: 5px;
+
+    @include respond(phone) {
+      width: 80%;
+    }
+  }
+}

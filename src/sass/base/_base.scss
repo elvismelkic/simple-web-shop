@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  min-height: 100%;
+  font-size: 62.5%; // 62.5% * 16px = 10px
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px, 12 / 16 = 75%
+  }
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+::selection {
+  background-color: $color-primary-dark;
+  color: $color-white;
+}

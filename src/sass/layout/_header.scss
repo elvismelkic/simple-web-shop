@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  padding-top: 14rem;
+  background-color: $color-primary-dark;
+  background-repeat: repeat;
+
+  @include respond(tab-land) {
+    padding-top: 5rem;
+  }
+
+  &__container {
+    max-width: 100rem;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+
+    @include respond(tab-port) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

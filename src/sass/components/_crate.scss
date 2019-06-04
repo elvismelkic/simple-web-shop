@@ -1,0 +1,62 @@
+.crate {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1.5rem 0 1rem 0;
+
+    @include respond(phone) {
+      justify-content: center;
+      margin: 0 auto;
+    }
+  }
+
+  &__item {
+    margin-right: 2rem;
+    padding-bottom: 0.3rem;
+    border-bottom: solid 4px transparent;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: $color-grey-light;
+    cursor: pointer;
+
+    @include respond(phone) {
+      font-size: 1.4rem;
+      margin: 1.5rem;
+    }
+
+    &--active {
+      color: $color-black;
+      border-bottom: solid 4px red;
+    }
+  }
+
+  &__img-container {
+    margin: 3rem 0 1.5rem 0;
+
+    @include respond(phone) {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  &__img {
+    width: 25rem;
+
+    @include respond(phone) {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__quote-text {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__quote-source {
+    text-align: center;
+    color: $color-grey-light;
+  }
+}

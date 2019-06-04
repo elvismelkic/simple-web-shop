@@ -1,0 +1,92 @@
+.btn {
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1.2rem 2rem;
+  margin: 2rem 0;
+  border: 3px solid $color-primary;
+  cursor: pointer;
+  transition: all 0.1s linear;
+
+  &--filled {
+    color: $color-white;
+    background-color: $color-primary;
+  }
+
+  &--header {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+
+    @include respond(tab-land) {
+      bottom: 20%;
+    }
+
+    @media only screen and (max-width: 65.625em) {
+      bottom: 15%;
+    }
+
+    @media only screen and (max-width: 59.375em) {
+      bottom: 10%;
+    }
+
+    @include respond(tab-port) {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 90%);
+      font-size: 1.2rem;
+      padding: 1.3rem 3rem;
+    }
+
+    @include respond(phone) {
+      width: 18rem;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 90%);
+      font-size: 1.2rem;
+      padding: 1.3rem 3rem;
+    }
+  }
+
+  &--mobile-nav {
+    font-size: 1.2rem;
+    padding: 1.3rem 3rem;
+  }
+
+  &--modal {
+    color: $color-black;
+    background-color: $color-grey-light;
+    border: 3px solid $color-grey-light;
+
+    @include respond(phone) {
+      width: 20rem;
+      font-size: 1.2rem;
+      margin: 0;
+      padding: 1.3rem 3rem;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+  }
+
+  &--form {
+    width: 20rem;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 1.3rem 3rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  &--disabled {
+    color: $color-black;
+    background-color: $color-grey-light;
+    border: 3px solid $color-grey-light;
+    cursor: default;
+  }
+}
