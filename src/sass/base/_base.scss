@@ -8,10 +8,10 @@
 
 html {
   min-height: 100%;
-  font-size: 62.5%; // 62.5% * 16px = 10px
+  font-size: 75%; // 1rem = 12px, 12 / 16 = 75%
 
-  @include respond(big-desktop) {
-    font-size: 75%; // 1rem = 12px, 12 / 16 = 75%
+  @include respond(phone) {
+    font-size: 62.5%; // 1rem = 10px, 10 / 16 = 62.5%
   }
 }
 

@@ -36,6 +36,7 @@ class Nav extends Component {
                 <NavLink to="/basket" className="nav__link">
                   <img src={cart} className="nav__link" alt="home" />
                   <span className="nav__link nav__link--quantity">
+                    {/* Count total quantity of products in basket. */}
                     {this.props.basket.reduce(
                       (acc, next) => acc + next.quantity,
                       0
@@ -46,7 +47,7 @@ class Nav extends Component {
             </ul>
           </div>
         </nav>
-        {/* <nav className="mobile-nav">
+        <nav className="mobile-nav">
           <button className="mobile-nav__button" onClick={this.showMobileNav}>
             <span
               className={
@@ -59,17 +60,12 @@ class Nav extends Component {
             </span>
           </button>
           <div className="mobile-nav__container">
-            <NavLink to="/" className="mobile-nav__logo-container" exact>
-              <img
-                src={symbol}
-                className="mobile-nav__logo nav__logo-part1"
-                alt="logo"
-              />
-              <img
-                src={logo}
-                className="mobile-nav__logo nav__logo-part2"
-                alt="logo"
-              />
+            <NavLink
+              to="/"
+              exact
+              className="mobile-nav__link mobile-nav__link--logo"
+            >
+              <h1 className="heading heading--primary">e-devices</h1>
             </NavLink>
             <ul
               className={
@@ -96,12 +92,18 @@ class Nav extends Component {
                   activeClassName="mobile-nav__link--active"
                   onClick={this.showMobileNav}
                 >
-                  Basket
+                  Basket{" ("}
+                  {/* Count total quantity of products in basket. */}
+                  {this.props.basket.reduce(
+                    (acc, next) => acc + next.quantity,
+                    0
+                  )}
+                  {")"}
                 </NavLink>
               </li>
             </ul>
           </div>
-        </nav> */}
+        </nav>
       </Fragment>
     );
   }

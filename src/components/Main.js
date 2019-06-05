@@ -16,9 +16,7 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    // Update this.state.products so that its elements (products) have inBasket
-    // property set to "true" if said element is in this.state.basket
-    // and sort them by name ascending.
+    // Sort products by name ascending when component is mounted
     let newProducts = this.state.products.sort((currentProduct, nextProduct) =>
       currentProduct.name.toUpperCase() < nextProduct.name.toUpperCase()
         ? -1
@@ -29,6 +27,7 @@ class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // Sort products when "this.state.sortBy" is changed
     if (prevState.sortBy !== this.state.sortBy) {
       let sortedProducts = this.state.products.sort(
         (currentProduct, nextProduct) => {
@@ -56,11 +55,11 @@ class Main extends Component {
   }
 
   render() {
-    const { products, basket, sortBy } = this.state;
+    const { products, sortBy } = this.state;
     return (
       <main className="main">
         <div className="main__container">
-          <section className="main__beer">
+          <section className="main__header">
             <h2 className="main__heading">Products</h2>
             <select
               className="main__sort"
@@ -89,7 +88,6 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     ...state
   };

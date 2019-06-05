@@ -25,11 +25,6 @@ export default function Product({
               : ""}
           </span>
         </p>
-        {/* {inBasket ? (
-          <p className="product__info-row">
-            <span className="product__info-basket">In basket</span>
-          </p>
-        ) : null} */}
       </div>
     </div>
   );

@@ -1,34 +1,40 @@
 import React, { Component } from "react";
+import SidebarProduct from "./SidebarProduct";
+import { connect } from "react-redux";
 
-export default class SidebarBasket extends Component {
+class SidebarBasket extends Component {
   state = {
-    basket: JSON.parse(sessionStorage.getItem("basket")) || []
+    basket: this.props.basket
   };
 
   render() {
+    const { total } = this.props;
     const { basket } = this.state;
     return (
-      <section className="main__crate">
-        <h2 className="main__heading">Basket</h2>
-        <ul className="card__list">
+      <section className="sidebar-basket">
+        <h3 className="sidebar-basket__heading">Basket</h3>
+        <ul className="sidebar-basket__list">
           {basket ? (
             basket.map(product => (
-              <li
-                key={product.id}
-                onClick={() => this.handleClickProduct(product)}
-              >
-                <p className="crate__quote-text">{product.name}</p>
+              <li key={product.id}>
+                <SidebarProduct product={product} />
               </li>
             ))
           ) : (
             <div />
           )}
         </ul>
-        <p className="crate__quote-text">
-          The crate will remain forever empty due to the lack of functionality.
-        </p>
-        <p className="crate__quote-source">&mdash; Captain Disappointment</p>
+        <p className="sidebar-basket__total">TOTAL: {total.toFixed(2)} €</p>
       </section>
     );
   }
 }
+
+function mapStateToProps({ basket, total }) {
+  return {
+    basket,
+    total
+  };
+}
+
+export default connect(mapStateToProps)(SidebarBasket);

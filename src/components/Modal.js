@@ -17,6 +17,7 @@ class Modal extends Component {
     }));
   };
 
+  // Close modal when escape key is pressed.
   closeOnEscape = event => {
     this.setState(() => ({
       quantity: 1
@@ -26,7 +27,6 @@ class Modal extends Component {
   };
 
   componentDidMount() {
-    // Close modal when escape key is pressed.
     document.addEventListener("keydown", this.closeOnEscape, false);
   }
 
@@ -36,7 +36,10 @@ class Modal extends Component {
 
   render() {
     const product = this.props.product || null;
-
+    const isInBasket =
+      product !== null
+        ? this.props.basket.some(val => val.id === product.id)
+        : null;
     return (
       <div className="modal">
         {/* Darken the background when the modal appears.
@@ -75,7 +78,7 @@ class Modal extends Component {
               />
             </div>
             <div className="modal__info">
-              <p className="modal__name u-margin-bottom-mid">{product.name}</p>
+              <p className="modal__name">{product.name}</p>
               <div className="modal__row-container">
                 <p className="modal__info-row">
                   <span className="modal__info-value">{product.price} €</span>
@@ -108,6 +111,7 @@ class Modal extends Component {
               <div className="modal__button-container">
                 <Button
                   fill="filled"
+                  parent="modal"
                   clickFunction={() => {
                     this.props.addToBasket({
                       product,
@@ -115,15 +119,15 @@ class Modal extends Component {
                     });
                   }}
                 >
-                  {this.props.basket.every(val => val.id !== product.id)
-                    ? "Add to basket"
-                    : "Update quantity"}
+                  {!isInBasket ? "Add to basket" : "Update quantity"}
                 </Button>
                 <Button
                   fill="danger"
+                  parent="modal"
                   clickFunction={() => {
                     this.props.removeFromBasket(product.id);
                   }}
+                  isDisabled={!isInBasket}
                 >
                   Remove
                 </Button>
@@ -147,8 +151,8 @@ function mapDispatchToProps(dispatch) {
     addToBasket: product => {
       dispatch(addToBasket(product));
     },
-    removeFromBasket: product => {
-      dispatch(removeFromBasket(product));
+    removeFromBasket: id => {
+      dispatch(removeFromBasket(id));
     }
   };
 }

@@ -1,7 +1,7 @@
 export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
-export const RECEIVE_BASKET = "RECEIVE_BASKET";
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const EMPTY_BASKET = "EMPTY_BASKET";
 
 export function receiveProducts(products) {
   return {
@@ -21,5 +21,11 @@ export function removeFromBasket(id) {
   return {
     type: REMOVE_PRODUCT,
     id
+  };
+}
+
+export function emptyBasket() {
+  return {
+    type: EMPTY_BASKET
   };
 }

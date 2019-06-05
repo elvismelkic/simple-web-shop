@@ -15,6 +15,7 @@ class Basket extends Component {
     total: this.props.total,
     sortBy: "name asc"
   };
+
   handleTextChange = event => {
     let value = event.target.value;
 
@@ -22,26 +23,33 @@ class Basket extends Component {
       promotion: { ...this.state.promotion, promotionName: value }
     }));
   };
+
   handleButtonClick = () => {
     let {
       promotion: { promotionName, applied },
       total
     } = this.state;
-    let newTotal;
+    let newTotal, newApplied;
 
     if (applied) return;
 
     if (promotionName === "20%OFF") {
       newTotal = parseFloat((total * 0.8).toFixed(2));
+      newApplied = true;
     } else if (promotionName === "5%OFF") {
       newTotal = parseFloat((total * 0.95).toFixed(2));
+      newApplied = true;
     } else if (promotionName === "20EUROFF") {
       newTotal = parseFloat((total - 20).toFixed(2));
+      newApplied = true;
+    } else {
+      newTotal = total;
+      newApplied = applied;
     }
 
     this.setState(() => ({
-      total: newTotal,
-      promotion: { promotionName: "", applied: true }
+      total: newTotal >= 0 ? newTotal : 0,
+      promotion: { promotionName: "", applied: newApplied }
     }));
   };
 
@@ -52,6 +60,7 @@ class Basket extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
+    // Sort products when "this.state.sortBy" is changed
     if (prevState.sortBy !== this.state.sortBy) {
       let sortedBasket = this.state.basket.sort(
         (currentProduct, nextProduct) => {
@@ -77,6 +86,7 @@ class Basket extends Component {
       this.setState(() => ({ basket: sortedBasket }));
     }
   }
+
   render() {
     let { basket } = this.props;
     let {
@@ -124,13 +134,19 @@ class Basket extends Component {
                     onChange={this.handleTextChange}
                   />
                 </label>
-                <Button fill="filled" clickFunction={this.handleButtonClick}>
+                <Button
+                  fill="filled"
+                  parent="basket"
+                  clickFunction={this.handleButtonClick}
+                >
                   Apply
                 </Button>
               </div>
               <p className="main__total">TOTAL: {total.toFixed(2)} €</p>
               <NavLink to="/checkout" className="nav__link">
-                <Button fill={"filled"}>Proceed to checkout</Button>
+                <Button fill="filled" parent="basket">
+                  Proceed to checkout
+                </Button>
               </NavLink>
             </Fragment>
           )}

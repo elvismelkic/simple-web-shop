@@ -23,6 +23,10 @@
       flex-direction: column;
       align-items: center;
     }
+
+    @include respond(phone) {
+      margin-top: 1rem;
+    }
   }
 
   &__logo-container {
@@ -50,8 +54,18 @@
       left: 50%;
       transform: translate(-50%, -50%);
 
+      @include respond(tab-port) {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+        justify-content: center;
+        margin: 1rem;
+      }
+
       @include respond(phone) {
         flex-direction: column;
+        margin: 1rem;
       }
     }
 
@@ -69,7 +83,7 @@
     text-align: center;
 
     @include respond(phone) {
-      margin: 2rem;
+      margin: 1rem;
     }
   }
 
@@ -91,7 +105,11 @@
       }
 
       @include respond(tab-port) {
-        margin: 2rem;
+        margin: 0 2rem;
+      }
+
+      @include respond(phone) {
+        margin: 0 2rem;
       }
     }
   }

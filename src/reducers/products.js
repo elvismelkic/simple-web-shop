@@ -1,6 +1,4 @@
-import { RECEIVE_PRODUCTS } from "../actions/products";
-import { ADD_PRODUCT } from "../actions/products";
-import { REMOVE_PRODUCT } from "../actions/products";
+import { ADD_PRODUCT, REMOVE_PRODUCT, EMPTY_BASKET } from "../actions/products";
 
 const initState = {
   products: [
@@ -46,9 +44,11 @@ const initState = {
     }
   ],
   basket: [],
-  total: 0
+  total: 0 // total price
 };
 
+// Calculate total price based on special discounts for
+// quantity of certain products.
 function calcTotal(basket) {
   return parseFloat(
     basket
@@ -77,10 +77,16 @@ export default function products(state = initState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
       var { product, quantity } = action.product;
+
+      // Update basket with the product, or if the product
+      // is already in the basket, remove said product and
+      // add again said product, but with the correct quantity.
       var newBasket = state.basket
         .filter(val => val.id !== product.id)
         .concat({ ...product, quantity });
+
       var total = calcTotal(newBasket);
+
       return {
         ...state,
         basket: newBasket,
@@ -90,10 +96,17 @@ export default function products(state = initState, action) {
       var { id } = action;
       var newBasket = state.basket.filter(val => val.id !== id);
       var total = calcTotal(newBasket);
+
       return {
         ...state,
         basket: newBasket,
         total
+      };
+    case EMPTY_BASKET:
+      return {
+        ...state,
+        basket: [],
+        total: 0
       };
     default:
       return state;

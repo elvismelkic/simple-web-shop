@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Modal from "./Modal";
 import Product from "./Product";
-import { connect } from "react-redux";
 
 export default class ProductList extends Component {
   state = {
@@ -36,12 +35,3 @@ export default class ProductList extends Component {
     );
   }
 }
-
-// function mapStateToProps(state) {
-//   console.log(state);
-//   return {
-//     ...state
-//   };
-// }
-
-// export default connect(mapStateToProps)(ProductList);

@@ -1,29 +1,58 @@
 .checkout {
-  &__form {
+  &__container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include respond(tab-port) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &__section {
+    max-width: 50rem;
+    width: 45%;
+    margin: 0 0 2.5rem;
     background-color: $color-white;
-    padding: 2rem 1rem 6rem;
-    border-radius: 5px;
+    padding: 1rem 2rem 4rem;
     box-shadow: 0 0.4rem 0.4rem rgba($color-black, 0.15);
     position: relative;
+    align-self: flex-start;
+
+    @include respond(tab-port) {
+      width: 80%;
+      align-self: auto;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
   }
 
   &__heading {
-    margin: 2rem 1rem;
+    margin: 2rem 0;
     text-transform: uppercase;
+
+    &--required {
+      font-size: 1.2rem;
+      color: $color-danger-light;
+    }
   }
 
   &__input {
     display: block;
-    width: 50%;
+    width: 80%;
     margin: 2rem 0;
     padding: 1rem;
     font-family: inherit;
     font-size: 1.2rem;
     border: 1px solid $color-grey-light;
-    border-radius: 5px;
 
     @include respond(phone) {
-      width: 80%;
+      width: 100%;
     }
   }
 
@@ -81,18 +110,7 @@
     padding: 2rem 1rem 0;
   }
 
-  &__textarea {
-    width: 100%;
-    height: 15rem;
-    padding: 1rem;
-    font-family: inherit;
-    font-size: 1.2rem;
-    border: 1px solid $color-grey-light;
-    border-radius: 5px;
-  }
-
   &__checkbox-label {
-    display: flex;
     margin: 1rem 0;
     font-size: 1.2rem;
     cursor: pointer;
@@ -103,8 +121,8 @@
   }
 
   &__checkbox-button {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.4rem;
+    width: 1.4rem;
     border: 2px solid $color-grey-light;
     display: inline-block;
     position: relative;
@@ -118,10 +136,10 @@
       height: 3px;
       width: 0.7rem;
       position: absolute;
-      left: 20%;
+      left: 15%;
       top: 40%;
       transform: rotate(45deg);
-      background-color: $color-primary-dark;
+      background-color: $color-primary;
       opacity: 0;
       transition: opacity 0.2s;
     }
@@ -132,10 +150,10 @@
       height: 3px;
       width: 1.2rem;
       position: absolute;
-      left: 40%;
+      left: 35%;
       top: 25%;
       transform: rotate(-45deg);
-      background-color: $color-primary-dark;
+      background-color: $color-primary;
       opacity: 0;
       transition: opacity 0.2s;
     }

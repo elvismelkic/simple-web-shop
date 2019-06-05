@@ -19,6 +19,7 @@
   }
 
   &__container {
+    max-width: 80%;
     width: 60rem;
     height: 50rem;
     visibility: hidden;
@@ -36,7 +37,14 @@
     transition: all 0.3s ease-out;
     z-index: 9999;
 
+    @include respond(tab-port) {
+      width: 50rem;
+      height: 50rem;
+    }
+
     @include respond(phone) {
+      width: 90%;
+      height: 90%;
       flex-direction: column;
       padding: 0 1rem;
     }
@@ -50,13 +58,6 @@
         width: 90%;
       }
     }
-  }
-
-  &__heart {
-    position: absolute;
-    top: 3rem;
-    left: 3rem;
-    cursor: pointer;
   }
 
   &__exit {
@@ -77,10 +78,12 @@
     justify-content: center;
     align-items: center;
 
+    @include respond(tab-port) {
+      width: 25%;
+    }
+
     @include respond(phone) {
-      height: auto;
-      position: absolute;
-      top: -2rem;
+      height: 25%;
     }
   }
 
@@ -89,15 +92,22 @@
     transition: all 0.6s ease-out;
 
     @include respond(phone) {
-      height: 25rem;
+      width: auto;
+      height: 15rem;
     }
   }
 
   &__name {
     font-size: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
+
+    @include respond(tab-port) {
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
 
     @include respond(phone) {
       font-size: 2.5rem;
@@ -111,15 +121,11 @@
 
     @include respond(phone) {
       width: 90%;
-      margin-top: 23rem;
       padding-left: 0;
     }
 
     &-row {
       margin: 0.5rem 0;
-
-      @include respond(phone) {
-      }
     }
 
     &-name {
@@ -139,9 +145,13 @@
       font-size: 2rem;
       font-weight: 600;
 
+      @include respond(tab-port) {
+        font-size: 1.7rem;
+      }
+
       @include respond(phone) {
         margin: 0 0.5rem;
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
     }
 
@@ -150,12 +160,15 @@
       color: $color-grey;
       line-height: 2;
 
+      @include respond(tab-port) {
+        font-size: 1rem;
+      }
+
       @include respond(phone) {
         text-align: center;
         width: 100%;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         line-height: 1.5;
-        padding-bottom: 5rem;
       }
     }
   }
@@ -167,7 +180,7 @@
     justify-content: center;
 
     @include respond(phone) {
-      width: 70%;
+      width: 90%;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -183,15 +196,20 @@
     font-size: 1.2rem;
     border: 1px solid $color-grey-light;
     border-radius: 5px;
-
-    @include respond(phone) {
-      width: 80%;
-    }
   }
 
   &__button-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @include respond(tab-port) {
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    @include respond(phone) {
+      align-items: center;
+    }
   }
 }
